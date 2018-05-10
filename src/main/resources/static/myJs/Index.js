@@ -15,7 +15,7 @@ var TableInit = function(){
 	//初始化Table
 	oTableInit.Init = function(){
 		//table 的id
-		console.log("初始化Table");
+		console.log("1.初始化Table");
 		$("#tb_devices").bootstrapTable({
 			url:'/api/selectN',
 			method:'get',
@@ -42,9 +42,7 @@ var TableInit = function(){
             cardView: false,                    //是否显示详细视图
             detailView: false,                   //是否显示父子表
             
-            /**
-             * 
-             */
+            
             columns: [{
                 checkbox: true
             }, {
@@ -64,9 +62,11 @@ var TableInit = function(){
                 title: '区'
             } ]
 		});
+		console.log("bootstrapTable完成");
 	};
 	//得到查询的参数
 	oTableInit.queryParams = function (params) {
+		console.log("3.得到查询的参数，queryParams");
 //            limit: params.limit,   //页面大小
 //            offset: params.offset,  //页码
 
@@ -94,8 +94,10 @@ var TableInit = function(){
         //初始化页面上面的按钮事件
     	//按钮点击事件
     	$("#btn_query").click(function(){
-    		  new TableInit();
-    		  console.log("按钮点击事件");
+    		console.log("按钮点击事件");
+    		  var table = new TableInit();
+    		  table.Init();
+    		  table.queryParams();
     		 
     	});
     };
