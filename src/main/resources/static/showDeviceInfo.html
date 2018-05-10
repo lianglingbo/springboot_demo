@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>设备信息</title>
+<script src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	function selectN(){
+		 var deviceId = $("#deviceId").val();
+		 $.ajax(
+				 {
+					 url:'/api/selectN',
+						type:'post',
+						dataType:'json',
+						data:{deviceId:deviceId},
+						success:function(json){
+							var len = json.length;
+							var cm = "";
+							if(len > 0 ){
+								for(var i=0;i<len;i++){
+									cm += '<tr data-id='+json[i]['deviceId']+'>';
+									cm += '<td>';
+									cm += i+1;
+				                    cm += '</td>'
+				                    
+				                    cm += '<td class="tl">';
+				                    cm += '<p>'+json[i]["province"]+'</p>';
+				                    cm += '</td>';
+				                    
+				                    cm += '<td class="tl">';
+				                    cm += '<p>'+json[i]["city"]+'</p>';
+				                    cm += '</td>';
+				                    
+				                    cm += '<td class="tl">';
+				                    cm += '<p>'+json[i]["district"]+'</p>';
+				                    cm += '</td>';
+				                   
+				                    
+				                    cm += '</tr>';
+				                    console.log(cm);
+				                    $('.deviceTable').html(cm);
+								}
+							}
+						} 
+				 }
+			 
+		 
+		 );
+	}
+	
+
+</script>
+</head>
+<body>
+<table border="0" class="deviceTable" cellspacing="0" cellpadding="1">
+	<input type="text" id="deviceId" placeholder="设备id" />
+	<button type="button" class="btn_nor" onclick="selectN()">查询</button>
+	<tr>
+		<td>deviceId</td>
+		<td>status</td>
+		<td>province</td>
+		<td>city</td>
+		<td>district</td>
+	</tr>
+	
+	<tr data-id="">
+		<td></td>
+		<td class="t1">
+			<p></p>
+		</td>
+	
+	</tr>
+</table>
+
+</body>
+</html>

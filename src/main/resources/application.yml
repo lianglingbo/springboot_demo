@@ -1,0 +1,7 @@
+#配置数据源
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/device_info?mysql=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 
+    driver-class-name: com.mysql.jdbc.Driver
