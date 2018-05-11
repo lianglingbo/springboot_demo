@@ -14,8 +14,6 @@ var TableInit = function(){
 	var oTableInit = new Object();
 	//初始化Table
 	oTableInit.Init = function(){
-		//table 的id
-		console.log("1.初始化Table");
 		$("#tb_devices").bootstrapTable({
 			url:'/api/selectN',
 			method:'get',
@@ -62,14 +60,12 @@ var TableInit = function(){
                 title: '区'
             } ]
 		});
-		console.log("bootstrapTable完成");
 	};
 	//得到查询的参数
 	oTableInit.queryParams = function (params) {
 		console.log("3.得到查询的参数，queryParams");
 //            limit: params.limit,   //页面大小
 //            offset: params.offset,  //页码
-
         var deviceId = $("#txt_deviceId").val();
 		var status = $("#txt_status").val();
 		var temp = {};
@@ -79,7 +75,6 @@ var TableInit = function(){
 		if(status.length > 0){
 			temp["status"]=status;
 		}
-		console.log(temp);
         return temp;
     };
     return oTableInit;
@@ -92,13 +87,8 @@ var TableInit = function(){
 
     oInit.Init = function () {
         //初始化页面上面的按钮事件
-    	//按钮点击事件
     	$("#btn_query").click(function(){
-    		console.log("按钮点击事件");
-    		  var table = new TableInit();
-    		  table.Init();
-    		  table.queryParams();
-    		 
+    		$("#tb_devices").bootstrapTable('refresh');
     	});
     };
 
