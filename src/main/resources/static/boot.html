@@ -8,6 +8,7 @@
 <script src="js/bootstrap-table.js"></script>
 <script src="js/bootstrap-table-zh-CN.js"></script>
 <script src="myJs/Index.js"></script>
+<script src="js/echarts.js"></script>
 <link href="css/bootstrap.css" rel="stylesheet" />
 <link href="css/bootstrap-table.css" rel="stylesheet" />
 </head>
@@ -33,7 +34,23 @@
 				</form>
 			</div>
 		</div>
-		
+		<div id="main" style="width: 600px;height:400px;"></div>
+		<script type="text/javascript">
+	var myChart = echarts.init(document.getElementById('main'));
+	function show(){
+		myChart.clear();
+		myChart.showLoading({text:'...loading'});
+		$.getJSON('/api/test',function(data){
+			if(data){
+				myChart.setOption(data);
+				myChart.hideLoading();
+			}else{
+				alert("失败");
+			}
+		});
+	}
+	show();
+</script>
 		<div id="toolbar" class="btn-group">
             <button id="btn_add" type="button" class="btn btn-default">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增

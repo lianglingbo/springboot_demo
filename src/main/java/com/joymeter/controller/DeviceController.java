@@ -44,8 +44,8 @@ public class DeviceController {
 		Option option = new Option();
         //标题
         Title title = new Title();
-        title.setText("豆瓣电影上映年份");
-        title.setSubtext("来源豆瓣");
+        title.setText("设备离线率");
+        title.setSubtext("");
         title.setX("center");
         option.setTitle(title);
         //提示框
