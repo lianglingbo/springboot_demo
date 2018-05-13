@@ -38,5 +38,39 @@ public class DeviceServiceImpl implements DeviceService {
 			return null;
 		}
 	}
+	/**
+	 * 插入
+	 */
+	@Override
+	public void addDeviceData(DeviceInfo deviceInfo) {
+		// TODO Auto-generated method stub
+		try {
+			deviceDao.addDeviceInfo(deviceInfo);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	public int updateDeviceInfoByDeviceId(DeviceInfo deviceInfo) {
+		// TODO Auto-generated method stub
+		try {
+			return deviceDao.updateDeviceInfoByDeviceId(deviceInfo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		 
+	}
+	@Override
+	public int updateDeviceInfoBySim(DeviceInfo deviceInfo) {
+		// TODO Auto-generated method stub
+		try {
+			return deviceDao.updateDeviceInfoBySim(deviceInfo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 
 }

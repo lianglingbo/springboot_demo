@@ -18,6 +18,7 @@ import com.github.abel533.echarts.code.Trigger;
 import com.github.abel533.echarts.series.Pie;
 import com.joymeter.bean.DeviceInfo;
 import com.joymeter.service.DeviceService;
+import com.joymeter.utils.DeviceFactory;
 
 @RestController
 @RequestMapping("/api")
@@ -38,6 +39,56 @@ public class DeviceController {
 		return deviceService.selectN(deviceInfo);
 	}
 	
+	@RequestMapping("/addDeviceData")
+	public void addDeviceData(DeviceInfo deviceInfo) {
+		System.out.println("开始插入");
+		deviceService.addDeviceData(deviceInfo);
+	}
+	
+	
+	/**
+	 * 模拟设备注册接口
+	* @Title: insertClient
+	* @Description: TODO
+	* @param     设定文件
+	* @return void    返回类型
+	* @throws
+	 */
+	@RequestMapping("/client")
+	public void insertClient() {
+		for(int i = 0;i<100;i++) {
+			System.out.println("插入第"+i+"条");
+			deviceService.addDeviceData(DeviceFactory.newDevice());
+		}
+	}
+	
+	/**
+	 * 更新接口ByDeviceId
+	* @Title: updateDeviceInfoByDeviceId
+	* @Description: TODO
+	* @param @param deviceInfo
+	* @param @return    设定文件
+	* @return int    返回类型
+	* @throws
+	 */
+	@RequestMapping("/update/byDeviceId")
+	public int updateDeviceInfoByDeviceId(DeviceInfo deviceInfo) {
+		return deviceService.updateDeviceInfoByDeviceId(deviceInfo);
+	}
+	
+	/**
+	 * 更新接口BySim
+	* @Title: updateDeviceInfoBySim
+	* @Description: TODO
+	* @param @param deviceInfo
+	* @param @return    设定文件
+	* @return int    返回类型
+	* @throws
+	 */
+	@RequestMapping("/update/bySim")
+	public int updateDeviceInfoBySim(DeviceInfo deviceInfo) {
+		return deviceService.updateDeviceInfoByDeviceId(deviceInfo);
+	}
 	//测试echarts
 	@RequestMapping("/test")
 	public Option getEcharts() {
